@@ -586,6 +586,7 @@ class MediaFileDto implements JsonSerializable
 
         $customFields = [];
         foreach ($mediaFileData['custom_fields'] as $id => $value) {
+            $value = $value ?? ''; 
             $customFields[] = new MediaFileCustomFieldDto((int)$id, $value);
         }
 
