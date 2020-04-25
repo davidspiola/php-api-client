@@ -6,7 +6,7 @@ namespace AzuraCast\Api\Dto;
 class MediaFileCustomFieldDto
 {
     /**
-     * @var int
+     * @var string
      */
     protected $id;
 
@@ -16,29 +16,29 @@ class MediaFileCustomFieldDto
     protected $value;
 
     /**
-     * @param int $id
+     * @param string $id
      * @param string $value
      */
-    public function __construct(int $id, string $value)
+    public function __construct(string $id, string $value)
     {
         $this->setId($id)
             ->setValue($value);
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param string $id
      *
      * @return MediaFileCustomFieldDto
      */
-    public function setId(int $id): MediaFileCustomFieldDto
+    public function setId(string $id): MediaFileCustomFieldDto
     {
         $this->id = $id;
 
