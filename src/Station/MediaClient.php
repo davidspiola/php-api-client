@@ -5,6 +5,7 @@ namespace AzuraCast\Api\Station;
 
 use AzuraCast\Api\AbstractStationClient;
 use AzuraCast\Api\Dto;
+use AzuraCast\Api\Dto\MediaFileDto;
 use AzuraCast\Api\Exception;
 
 class MediaClient extends AbstractStationClient
@@ -53,6 +54,22 @@ class MediaClient extends AbstractStationClient
             $mediaFileDtoArray[] = Dto\MediaFileDto::fromArray($mediaFileData);
         }
         return $mediaFileDtoArray;
+    }
+
+    /**
+     * @return Dto\MediaFileDto
+     *
+     * @throws Exception\AccessDeniedException
+     * @throws Exception\ClientRequestException
+     */
+    public function get(int $id): Dto\MediaFileDto
+    {
+        $mediaFileData = $this->request(
+            'GET',
+            sprintf('station/%s/file/%s', $this->stationId, $id)
+        );
+
+        return Dto\MediaFileDto::fromArray($mediaFileData);
     }
 
     /**
