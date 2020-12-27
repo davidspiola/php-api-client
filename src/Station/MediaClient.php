@@ -46,11 +46,11 @@ class MediaClient extends AbstractStationClient
     {
         $mediaFilesDataArray = $this->request(
             'GET',
-            sprintf('station/%s/files', $this->stationId)
+            sprintf('station/%s/files?per_page=0', $this->stationId)
         );
 
         $mediaFileDtoArray = [];
-        foreach ($mediaFilesDataArray as $mediaFileData) {
+        foreach ($mediaFilesDataArray['rows'] as $mediaFileData) {
             $mediaFileDtoArray[] = Dto\MediaFileDto::fromArray($mediaFileData);
         }
         return $mediaFileDtoArray;
